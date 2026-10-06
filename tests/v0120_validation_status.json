@@ -1,0 +1,9 @@
+{
+  "version": "0.12.0",
+  "lua_and_world": "SIMULATION_PASS",
+  "chat_server_entry": "SIMULATION_PASS_PROVIDER_AND_UI_NOT_REAL",
+  "python_simulated_provider_tests": 17,
+  "real_provider": "NOT_RUN_NO_LOCAL_CONFIGURED_KEY",
+  "real_dst_chat_and_engine": "NOT_RUN_NO_DST_CLIENT",
+  "game_acceptance": "PENDING_USER_ENVIRONMENT_FOUR_SCENARIOS"
+}

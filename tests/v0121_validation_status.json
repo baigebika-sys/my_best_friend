@@ -1,0 +1,9 @@
+{
+  "version": "0.12.1",
+  "lua_native_state_excerpt": "SIMULATION_PASS",
+  "python_simulated_provider_tests": 21,
+  "real_provider": "NOT_RUN",
+  "real_dst": "NOT_RUN",
+  "original_crash_exact_stack": "NOT_PROVIDED",
+  "async_work_exception_boundary": "PATCHED_AND_SIMULATED"
+}

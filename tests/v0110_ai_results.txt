@@ -1,0 +1,17 @@
+test_history_state_and_failure (test_ai.AI.test_history_state_and_failure) ... ok
+test_explicit_commands_and_invalid_schema (test_ai.Decisions.test_explicit_commands_and_invalid_schema) ... ok
+test_question_chat_unclear_never_change_mode (test_ai.Decisions.test_question_chat_unclear_never_change_mode) ... ok
+test_eat_schema (test_ai.EatSchema.test_eat_schema) ... ok
+test_supply_prompt_and_snapshot (test_ai.EatSchema.test_supply_prompt_and_snapshot) ... ok
+test_mixed_plan (test_ai.MixedSchema.test_mixed_plan) ... ok
+test_supported_and_invalid (test_ai.PickupSchema.test_supported_and_invalid) ... ok
+test_larger_snapshot_is_bounded_and_accepted (test_ai.SupplyPayloadLimit.test_larger_snapshot_is_bounded_and_accepted) ... ok
+test_compound_result_transport (test_revision_ai.RevisionPlans.test_compound_result_transport) ... ok
+test_plan_schema (test_revision_ai.RevisionPlans.test_plan_schema) ... ok
+test_bridge_roundtrip_and_prompt (test_work_ai.WorkDecisions.test_bridge_roundtrip_and_prompt) ... ok
+test_work_schemas (test_work_ai.WorkDecisions.test_work_schemas) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.576s
+
+OK

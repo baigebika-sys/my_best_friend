@@ -1,0 +1,132 @@
+PASS all Lua syntax (Lua 5.4 only, not a DST engine run)
+PASS existing stock counts, only two needed plants harvested, confirmed owned total
+PASS grass; default radius 32 and fixed origin do not expand with movement, no owner-centered scan
+PASS vanilla CHOP + BufferedAction deduct durability; finish animation, fell tree, then actual log pickup
+PASS rocks/flint/gold: real drops required, only matching drops counted/taken, gold never uses plain rock
+PASS missing tools use real crafting ingredients, tool breaks/rebuilds or reports missing material; no recursive search
+PASS actual recipe costs/output quantities, tech gate and unlock, freebuild refusal, false callback never counts craft
+PASS bounded stack giving exact requested count, unrelated stock/tool preserved; full at plan/execution/partial delivery retains remainder
+PASS stale action invalidation, replacing task, vanished/reselected target, bounded path and no-world-progress failures, full pack
+PASS success/failure restore original wait, pending supply pauses work then rechecks, legacy mixed pickup uses owned totals
+PASS delayed falling loot, source capacity, pre/execution crafting checks, chest exclusion, output-without-consumption rejected, heavy item protected
+PASS delivery audit captures execution-time inventory, tree monster excluded from non-combat collection
+PASS reusable Request/Status/Cancel planner interface with bounded last result
+PASS continuous swing window, native durability, one-tree objective differs from one-log inventory
+PASS explicit equip and multi-resource collection followed by exact delivery
+PASS bounded material gathering -> existing research station -> real craft/unlock -> delivery; missing materials reported
+PASS one action transfers target stack count; full-player inventory is discovered only in actual nearby giving action
+PASS partial stock proceeds to other gifts, receiver failure stops remaining gifts; repeat cancellation and needs pause prevent stale swing
+[YBF WORK] execution_error task=1 step=nil target=nil: [string "test_foundation.lua"]:374: simulated resource exception
+PASS visible grass beyond old radius, equip available axe variant, receiver checks only at action, unexpected work error reports and releases controller
+PASS obtaining crafted goods counts owned finished stock, makes only missing output, then delivers specified quantity
+PASS EMPTY inventory + loose rocks + initially locked science recipe -> real-cost craft/unlock -> exact delivery (simulated world)
+PASS EMPTY inventory -> harvest tool ingredients -> real pickaxe cost/equip/durability -> ore/drop pickup -> science/cutstone/delivery
+PASS precise missing material retains acquired stock/progress, releases movement in wait, no rescan loop, explicit resume completes
+PASS missing technology retains materials and resumes; unlocked recipe needs no science station
+PASS cyclic tool/flint mining dependency and unavailable material stop finitely; existing finished output skips all crafting
+PASS partial multi-item gift and resume never re-gathers delivered stock; stop invalidates pending/blocked tasks
+PASS planner uses actual recipe output/batch costs, delivers only requested amount and retains excess
+[YBF COMM] id=360-0-798832-671299-1 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=360-0-798832-671299-1 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=368-0-116802-149779-1 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=368-0-116802-149779-1 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=384-0-226240-871841-1 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=384-0-226240-871841-1 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=389-0-198334-563458-1 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=389-0-198334-563458-1 status=reply rtt_ms=0 detail=task completed
+PASS actual chat server RPC handler -> context/snapshot -> simulated provider result -> real communication dispatch -> all THREE goal cases; duplicate chat tag ignored (NOT real model/game verification)
+PASS goal needs pause resumes same work; action/resume ceilings, replacement invalidation, actual unsupported recipe ingredient reports specific blocker
+[YBF WORK] execution_error task=1 step=chop target=evergreen: phase=native_action_CHOP
+[string "test_foundation.lua"]:521: injected native chop exception
+stack traceback:
+	[C]: in function 'error'
+	[string "test_foundation.lua"]:521: in field 'fn'
+	tests/reference/bufferedaction.lua:26: in function <tests/reference/bufferedaction.lua:22>
+	(...tail calls...)
+	[C]: in function 'xpcall'
+	my_best_friend/scripts/ybf_work_safety.lua:8: in function 'ybf_work_safety.Run'
+	my_best_friend/scripts/ybf_work_safety.lua:22: in method 'Do'
+	[string "test_foundation.lua"]:522: in method 'PerformBufferedAction'
+	tests/reference/states_work.lua:65: in function <tests/reference/states_work.lua:63>
+	(...tail calls...)
+	[C]: in function 'xpcall'
+	my_best_friend/scripts/ybf_work_safety.lua:8: in function 'ybf_work_safety.Run'
+	my_best_friend/scripts/ybf_work_safety.lua:38: in field 'fn'
+	[string "test_foundation.lua"]:506: in function <[string "test_foundation.lua"]:505>
+	[C]: in function 'pcall'
+	[string "test_foundation.lua"]:524: in main chunk
+[YBF WORK] execution_error task=1 step=chop target=evergreen: phase=state_chop_frame_0.46666666666667
+[string "test_foundation.lua"]:527: injected native controller exception
+stack traceback:
+	[C]: in function 'error'
+	[string "test_foundation.lua"]:527: in method 'IsAnyOfControlsPressed'
+	tests/reference/states_work.lua:79: in function <tests/reference/states_work.lua:76>
+	(...tail calls...)
+	[C]: in function 'xpcall'
+	my_best_friend/scripts/ybf_work_safety.lua:8: in function 'ybf_work_safety.Run'
+	my_best_friend/scripts/ybf_work_safety.lua:38: in field 'fn'
+	[string "test_foundation.lua"]:506: in function <[string "test_foundation.lua"]:505>
+	[C]: in function 'pcall'
+	[string "test_foundation.lua"]:528: in main chunk
+PASS native SG chop first hit/repeat, native action and timeline errors stay in friend task, human players retain native behavior, natural completion report
+[YBF WORK] execution_error task=1 step=mine target=rock1: phase=state_mine_frame_0.23333333333333
+[string "test_foundation.lua"]:534: injected native mining FX exception
+stack traceback:
+	[C]: in function 'error'
+	[string "test_foundation.lua"]:534: in function 'PlayMiningFX'
+	tests/reference/states_work.lua:132: in function <tests/reference/states_work.lua:130>
+	(...tail calls...)
+	[C]: in function 'xpcall'
+	my_best_friend/scripts/ybf_work_safety.lua:8: in function 'ybf_work_safety.Run'
+	my_best_friend/scripts/ybf_work_safety.lua:38: in field 'fn'
+	[string "test_foundation.lua"]:506: in function <[string "test_foundation.lua"]:505>
+	[C]: in function 'pcall'
+	[string "test_foundation.lua"]:535: in main chunk
+PASS mining shares asynchronous protection; mixed goal completion reports quantities without internal plan/transport text
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=30->50 sanity=100->100
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=50->70 sanity=100->100
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=70->90 sanity=100->100
+PASS full status stores food; local hunger hysteresis consumes one unit at a time and stops
+[YBF SUPPLY] action=eat item=pierogi consumed=1 health=40->80 hunger=100->100 sanity=100->100
+[YBF SUPPLY] action=eat item=pierogi consumed=1 health=80->100 hunger=100->100 sanity=100->100
+[YBF SUPPLY] action=eat item=taffy consumed=1 health=100->100 hunger=100->100 sanity=20->50
+[YBF SUPPLY] action=eat item=taffy consumed=1 health=100->100 hunger=100->100 sanity=50->80
+PASS injured and low sanity choose useful safe supply; harmful food never emergency-enabled
+[YBF SUPPLY] action=heal item=healingsalve consumed=1 health=40->60 hunger=100->100 sanity=100->100
+PASS non-food medicine uses HEAL and consumes one; unsupported non-food rejected
+PASS reference Edible/Eater freshness, absorption, affinity and damage immunity match real consumption; diet and unknown hooks guarded
+PASS no-supply help once per episode, cooldown, recovery rearming and saved policy state
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=100->100 sanity=100->100
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=100->100 sanity=100->100
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=100->100 sanity=100->100
+PASS explicit eating bypasses thresholds but only specified units; missing food and stale request cannot continue
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=30->90 sanity=100->100
+PASS real work/needs adapters: eat between actions, continue pickup and restore original waiting mode
+[YBF SUPPLY] action=eat item=refused consumed=0 health=100->100 hunger=20->20 sanity=100->100
+[YBF SUPPLY] action=eat item=refused consumed=0 health=100->100 hunger=20->20 sanity=100->100
+[YBF SUPPLY] action=eat item=waiting consumed=0 health=100->100 hunger=20->20 sanity=100->100
+PASS failed supply bounded to two attempts; stalled action times out
+PASS finishing work cannot queue a supply action which task cleanup would cancel
+PASS fixed center, unit goal, shortfall, full, vanished target, bounded retries, cancelled late result, deadline
+PASS mixed items share total deadline and restore previous waiting mode only once
+[YBF COMM] id=1-0-740323-949810-1 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-740323-949810-1 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=1-0-740323-949810-2 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-740323-949810-2 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=1-0-740323-949810-3 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-740323-949810-3 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=1-0-740323-949810-4 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-740323-949810-4 status=reply rtt_ms=0 detail=task completed
+PASS new action allowlist, actual bridge snapshot/dispatch, player-bound give, stop restores original mode
+[YBF COMM] id=1-0-740323-949810-5 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-740323-949810-5 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=1-0-740323-949810-6 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-740323-949810-6 status=reply rtt_ms=0 detail=task completed
+PASS equipped tool and food alias snapshot, authoritative held-item answer, plan dispatch and failed snapshot returns a visible reason
+[YBF COMM] id=1-0-740323-949810-8 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] cancel_best_effort task=1-0-740323-949810-8 success=true http=200
+[YBF COMM] id=1-0-740323-949810-8 status=parse_error rtt_ms=0 detail=[指令解析失败] invalid_quantity：数量必须是整数；未下发工作动作
+PASS invalid provider decision creates classified chat UI error and zero work dispatch
+[YBF COMM] id=1-0-740323-949810-9 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-740323-949810-9 status=reply rtt_ms=0 detail=task completed
+PASS ordinary conversation reply through communication preserves work/mode and contains no transport status

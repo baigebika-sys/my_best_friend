@@ -1,0 +1,48 @@
+PASS all Lua syntax (Lua 5.4 only, not a DST engine run)
+PASS existing stock counts, only two needed plants harvested, confirmed owned total
+PASS grass; default radius 12 and fixed origin do not expand with movement, no owner-centered scan
+PASS vanilla CHOP + BufferedAction deduct durability; finish animation, fell tree, then actual log pickup
+PASS rocks/flint/gold: real drops required, only matching drops counted/taken, gold never uses plain rock
+PASS missing tools use real crafting ingredients, tool breaks/rebuilds or reports missing material; no recursive search
+PASS actual recipe costs/output quantities, tech gate and unlock, freebuild refusal, false callback never counts craft
+PASS vanilla single-unit giving exact requested count, unrelated stock/tool preserved; full at plan/execution/partial delivery retains remainder
+PASS stale action invalidation, replacing task, vanished/reselected target, bounded path and no-world-progress failures, full pack
+PASS success/failure restore original wait, pending supply pauses work then rechecks, legacy mixed pickup uses owned totals
+PASS delayed falling loot, source capacity, pre/execution crafting checks, chest exclusion, output-without-consumption rejected, heavy item protected
+PASS delivery audit captures execution-time inventory, tree monster excluded from non-combat collection
+PASS reusable Request/Status/Cancel planner interface with bounded last result
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=30->50 sanity=100->100
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=50->70 sanity=100->100
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=70->90 sanity=100->100
+PASS full status stores food; local hunger hysteresis consumes one unit at a time and stops
+[YBF SUPPLY] action=eat item=pierogi consumed=1 health=40->80 hunger=100->100 sanity=100->100
+[YBF SUPPLY] action=eat item=pierogi consumed=1 health=80->100 hunger=100->100 sanity=100->100
+[YBF SUPPLY] action=eat item=taffy consumed=1 health=100->100 hunger=100->100 sanity=20->50
+[YBF SUPPLY] action=eat item=taffy consumed=1 health=100->100 hunger=100->100 sanity=50->80
+PASS injured and low sanity choose useful safe supply; harmful food never emergency-enabled
+[YBF SUPPLY] action=heal item=healingsalve consumed=1 health=40->60 hunger=100->100 sanity=100->100
+PASS non-food medicine uses HEAL and consumes one; unsupported non-food rejected
+PASS reference Edible/Eater freshness, absorption, affinity and damage immunity match real consumption; diet and unknown hooks guarded
+PASS no-supply help once per episode, cooldown, recovery rearming and saved policy state
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=100->100 sanity=100->100
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=100->100 sanity=100->100
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=100->100 sanity=100->100
+PASS explicit eating bypasses thresholds but only specified units; missing food and stale request cannot continue
+[YBF SUPPLY] action=eat item=berries consumed=1 health=100->100 hunger=30->90 sanity=100->100
+PASS real work/needs adapters: eat between actions, continue pickup and restore original waiting mode
+[YBF SUPPLY] action=eat item=refused consumed=0 health=100->100 hunger=20->20 sanity=100->100
+[YBF SUPPLY] action=eat item=refused consumed=0 health=100->100 hunger=20->20 sanity=100->100
+[YBF SUPPLY] action=eat item=waiting consumed=0 health=100->100 hunger=20->20 sanity=100->100
+PASS failed supply bounded to two attempts; stalled action times out
+PASS finishing work cannot queue a supply action which task cleanup would cancel
+PASS fixed center, unit goal, shortfall, full, vanished target, bounded retries, cancelled late result, deadline
+PASS mixed items share total deadline and restore previous waiting mode only once
+[YBF COMM] id=1-0-446622-224651-1 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-446622-224651-1 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=1-0-446622-224651-2 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-446622-224651-2 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=1-0-446622-224651-3 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-446622-224651-3 status=reply rtt_ms=0 detail=task completed
+[YBF COMM] id=1-0-446622-224651-4 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=1-0-446622-224651-4 status=reply rtt_ms=0 detail=task completed
+PASS new action allowlist, actual bridge snapshot/dispatch, player-bound give, stop restores original mode

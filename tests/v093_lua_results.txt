@@ -1,0 +1,33 @@
+[YBF COMM] id=4-0-972845-292627-1 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=4-0-972845-292627-1 status=reply rtt_ms=100 detail=task completed
+PASS both entry points, public clean messages, client echo, no duplicate replay and completed waiting status
+[YBF COMM] id=4-0-972845-292627-2 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=4-0-972845-292627-2 status=reply rtt_ms=2000 detail=task completed
+PASS real adapter submits pending task, polls using GET and displays completion
+[YBF COMM] id=4-0-972845-292627-3 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=4-0-972845-292627-3 status=cancelled rtt_ms=0 detail=朋友死亡、被移除或持有人已离开；请求已取消
+[YBF COMM] cancel_best_effort task=4-0-972845-292627-3 success=true http=200
+[YBF COMM] id=4-0-972845-292627-3 status=ignored_late rtt_ms=0 detail=request ended
+PASS flower removal cancels request and suppresses late reply
+[YBF COMM] id=4-0-972845-292627-4 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=4-0-972845-292627-4 status=cancelled rtt_ms=0 detail=朋友死亡、被移除或持有人已离开；请求已取消
+PASS death event cancels request
+[YBF UI] send rejected: 没有找到对应朋友，请确认持有他的友谊小花且朋友还活着。
+[YBF UI] client notification unavailable
+PASS rejects flowers owned by another player
+PASS world shutdown cleanup
+PASS snapshot health day missing sanity
+[YBF COMM] id=4-20000-801988-227657-1 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=4-20000-801988-227657-1 status=error rtt_ms=0 detail=连接层失败（HTTP 0）；请检查程序并重新发送
+[YBF COMM] id=4-20000-801988-227657-2 status=sent rtt_ms=0 detail=submit queued
+[YBF COMM] id=4-20000-801988-227657-2 status=reply rtt_ms=0 detail=task completed
+PASS meaningful feedback in window, connection failure private, retry recovers without duplicate public errors
+PASS native delayed HUD controls lifecycle, button constructed after Controls, no duplicate installation
+PASS server-owned roster updates, duplicate names resolved by entity ID, stale IDs rejected
+PASS immediate echo, reply dedup, UI-only waiting, UTF-8 preview and bounded session history
+PASS native-screen lifecycle mock: send once, closed-window reception, reopen history, close releases modal focus
+PASS two same-name friends: identity selection and retry retains original recipient
+PASS retry does not redirect to remaining friend after recipient removal
+PASS config password mask, direct-local save, cleared key, asynchronous test usage, timeout and stale callback guard
+PASS frontend configuration button only in own mod page, no duplicate installation, opens custom screen
+PASS syntax: all mod Lua files (Lua 5.4 parser; DST Lua 5.1 engine not available)
