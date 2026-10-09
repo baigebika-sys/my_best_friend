@@ -1,0 +1,2 @@
+a7e5a07fec1d9de5b0fe9c9e9c7827782022aae43e9666592fbae39b81ff3a3d  my_best_friend_v0.16.0-r1_full.zip
+cada848550379e35bdc169ee9d832a5b4727d0c4e2569845afae0ef8611cb9e7  v0160_r1_fix_and_tests.md
